@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.neuedu.vue.mapper.ColumnMapper">
+
+    <select id="getColumn" resultType="org.neuedu.vue.model.Column">
+        select *
+        from `column`
+    </select>
+
+    <insert id="addColumn">
+        insert into `column` values(default ,#{colname},default )
+    </insert>
+
+<delete id="delColumn">
+    delete from `column` where id = #{id}
+</delete>
+
+    <update id="putColumn">
+        update `column`
+        set colname = #{colname}
+        where id = #{id}
+    </update>
+
+    <delete id="delManyColumn">
+        delete from  `column`
+        <where>
+        id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+        </where>
+    </delete>
+</mapper>
