@@ -26,4 +26,14 @@ public class UserService implements UserDetailsService {
         user.setRoles(roles);
         return user;
     }
+
+    public List<User> getUsers() {
+        List<User> users = userMapper.getUsers();
+        for (User user : users) {
+            List<Role> roles =userMapper.getRoleById(user.getId());
+            user.setPassword(null);
+            user.setRoles(roles);
+        }
+        return users;
+    }
 }

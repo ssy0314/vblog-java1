@@ -9,4 +9,7 @@ public interface UserMapper {
     User loadUserByUsername(String username);
 
     List<Role> getRoleById(Integer id);
+
+    List<User> getUsers();
+
 }

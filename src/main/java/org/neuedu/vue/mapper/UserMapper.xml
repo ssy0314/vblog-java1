@@ -11,5 +11,10 @@
         from `role`
         where id in (select rid from `user_role` where uid = #{uid})
     </select>
+    <select id="getUsers" resultType="org.neuedu.vue.model.User">
+        select *
+        from `user`
+    </select>
+
 
 </mapper>
