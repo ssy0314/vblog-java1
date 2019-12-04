@@ -12,4 +12,9 @@ public interface UserMapper {
 
     List<User> getUsers();
 
+    int delUser(User user);
+
+    int putUser(User user);
+
+    List<User> searchUsers(String name);
 }

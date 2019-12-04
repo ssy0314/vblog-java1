@@ -16,5 +16,26 @@
         from `user`
     </select>
 
+    <delete id="delUser">
+        delete from `user`
+        where id = #{id}
+    </delete>
+
+    <update id="putUser">
+        update `user`
+        set enabled = #{enabled}
+        where id=#{id}
+    </update>
+
+    <select id="searchUsers" resultType="org.neuedu.vue.model.User">
+        select *
+        from `user`
+        <where>
+            <if test="username!=''">
+                nickname like concat('%',#{name},'%')
+            </if>
+        </where>
+    </select>
+
 
 </mapper>

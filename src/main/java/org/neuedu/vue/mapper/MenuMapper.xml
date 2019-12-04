@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.neuedu.vue.mapper.MenuMapper">
+    <resultMap id="BaseResultMap" type="org.neuedu.vue.model.Menu">
+        <id column="id" property="id"></id>
+        <result column="pattern" property="pattern"></result>
+        <collection property="roles" ofType="org.neuedu.vue.model.Role">
+            <id column="rid" property="id"></id>
+            <result column="rname" property="name"></result>
+            <result column="rnameZh" property="nameZh"></result>
+        </collection>
+    </resultMap>
+
+    <select id="getAllMenu" resultMap="BaseResultMap">
+        SELECT m.*,r.id as rid,r.name as rname,r.nameZh as rnameZh
+        from `menu` m
+        join `menu_role` mr
+        on m.id = mr.mid
+        join `role` r
+        on r.id = mr.rid
+    </select>
+
+
+</mapper>
