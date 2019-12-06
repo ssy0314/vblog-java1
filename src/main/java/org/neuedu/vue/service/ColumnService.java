@@ -48,9 +48,7 @@ public class ColumnService {
     }
 
     public RespBean delManyColumn(ArrayList<Integer> list) {
-        for (Integer integer : list) {
-            System.out.println(integer);
-        }
+
         int i = columnMapper.delManyColumn(list);
         if (i!=0){
             return RespBean.ok(200,"批量删除成功");

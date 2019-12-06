@@ -38,5 +38,43 @@
             </if>
         </where>
     </select>
+    <update id="putArticle">
+    update `article`
+    <set>
+
+        <if test="status!=null">
+            status=#{status},
+        </if>
+        <if test="status==null">
+            updatetime = #{updatetime},
+        </if>
+        <if test="cid!=null">
+            cid=#{cid},
+        </if>
+        <if test="mdcontent!=null">
+            mdcontent=#{mdcontent},mdcontent=#{hmcontent}
+        </if>
+        <if test="title!=null">
+            title=#{title},
+        </if>
+
+    </set>
+        where id = #{id}
+    </update>
+    
+    <delete id="delArticle">
+        delete from `article` where id =#{id}
+    </delete>
+    
+    <delete id="delManyArticle">
+        delete from `article`
+        <where>
+            id in
+            <foreach collection="ids" item="id" separator="," close=")" open="(">
+                #{id}
+            </foreach>
+        </where>
+    </delete>
+
 
 </mapper>

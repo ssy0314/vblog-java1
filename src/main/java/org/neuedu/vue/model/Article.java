@@ -13,7 +13,7 @@ public class Article {
     private Date publishtime;
     private Integer uid;
     private Integer cid;
-    private Boolean status;
+    private Integer status;
     private Integer views;
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss",timezone = "Asia/Shanghai")
     private Date updatetime;
@@ -108,11 +108,11 @@ public class Article {
         this.cid = cid;
     }
 
-    public Boolean getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 }

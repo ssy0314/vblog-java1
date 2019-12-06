@@ -29,9 +29,6 @@ public class ColumnController {
     }
     @PostMapping("/delManyColumn")
     public RespBean delManyColumn(@RequestParam("ids") ArrayList<Integer> list){
-        for (Integer integer : list) {
-            System.out.println(integer);
-        }
         return columnService.delManyColumn(list);
     }
     }

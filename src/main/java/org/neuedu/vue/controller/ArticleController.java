@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/article")
@@ -24,15 +25,19 @@ public class ArticleController {
     }
     @PutMapping("/putArticle")
     public RespBean putArticle(@RequestBody Article article){
+        System.out.println(article.getId());
+        System.out.println(article.getStatus());
+        Date updatetime = new Date();
+        article.setUpdatetime(updatetime);
         return articleService.putArticle(article);
     }
     @DeleteMapping("/delArticle")
     public RespBean delArticle(@RequestBody Article article){
-        return articleService.putArticle(article);
+        return articleService.delArticle(article);
     }
     @PostMapping("/delManyArticle")
-    public RespBean delManyArticle(@Param("ids") ArrayList<Integer>){
-        return articleService.delManyArticle(article);
+    public RespBean delManyArticle(@RequestParam("ids") ArrayList<Integer> list){
+        return articleService.delManyArticle(list);
     }
 
 
