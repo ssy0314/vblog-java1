@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/column")
@@ -31,6 +32,12 @@ public class ColumnController {
     public RespBean delManyColumn(@RequestParam("ids") ArrayList<Integer> list){
         return columnService.delManyColumn(list);
     }
+    @GetMapping("/getColumnDate")
+    public List<Column> getColumnDate(){
+            return columnService.getColumnDate();
     }
+
+    }
+
 
 

@@ -9,6 +9,15 @@ public class Column {
     private String colname;
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss",timezone = "Asia/Shanghai")
     private Date enabletime;
+    private Integer counts;
+
+    public Integer getCounts() {
+        return counts;
+    }
+
+    public void setCounts(Integer counts) {
+        this.counts = counts;
+    }
 
     public Integer getId() {
         return id;

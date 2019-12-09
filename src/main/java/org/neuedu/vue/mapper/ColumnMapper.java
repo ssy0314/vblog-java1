@@ -17,4 +17,6 @@ public interface ColumnMapper {
     int putColumn(Column column);
 
     int delManyColumn(@Param("ids") ArrayList<Integer> list);
+
+    List<Column> getColumnDate();
 }

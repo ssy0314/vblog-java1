@@ -56,4 +56,8 @@ public class ColumnService {
             return RespBean.error(500,"批量删除失败");
         }
     }
+
+    public List<Column> getColumnDate() {
+        return columnMapper.getColumnDate();
+    }
 }
