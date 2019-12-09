@@ -42,17 +42,17 @@
     update `article`
     <set>
 
-        <if test="status!=null">
+        <if test="status==3">
             status=#{status},
         </if>
-        <if test="status==null">
+        <if test="status!=3">
             updatetime = #{updatetime},
         </if>
         <if test="cid!=null">
             cid=#{cid},
         </if>
         <if test="mdcontent!=null">
-            mdcontent=#{mdcontent},mdcontent=#{hmcontent}
+            mdcontent=#{mdcontent},hmcontent=#{hmcontent},
         </if>
         <if test="title!=null">
             title=#{title},
@@ -92,11 +92,28 @@
         insert into `article` values(default,#{title},#{hmcontent},#{mdcontent},default,default,default,#{uid},#{cid},#{status})
     </insert>
 
+
     <select id="searchArticleById" resultType="org.neuedu.vue.model.Article">
         select *
         from `article`
         where id =#{id}
     </select>
 
+    <resultMap id="DetailInfo" type="org.neuedu.vue.model.Article">
+        <result column="title" property="title"></result>
+        <result column="hmcontent" property="hmcontent"></result>
+        <result column="views" property="views"></result>
+        <result column="updatetime" property="updatetime"></result>
+        <association property="user" javaType="org.neuedu.vue.model.UserBean">
+            <result column="nickname" property="nickname"></result>
+        </association>
 
+    </resultMap>
+    <select id="getArticleDetail" resultMap="DetailInfo">
+        select title,hmcontent,views,updatetime,nickname
+        from `article` a
+        join `user` u
+        on a.uid=u.id
+        where a.id =#{id}
+    </select>
 </mapper>

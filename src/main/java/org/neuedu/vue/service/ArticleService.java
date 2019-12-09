@@ -66,14 +66,23 @@ public class ArticleService {
 
     public RespBean addArticle(Article article) {
         int i = articleMapper.addArticle(article);
-        if (i!=0){
+        if(article.getStatus()==1){ if (i!=0){
             return RespBean.ok(200,"发布文章成功");
         }else{
             return RespBean.error(500,"发布文章失败");
-        }
+        }}else{ if (i!=0){
+            return RespBean.ok(200,"文章已保存至草稿箱");
+        }else{
+            return RespBean.error(500,"保存文章失败");
+        }}
+
     }
 
     public Article searchArticleById(Article article) {
         return articleMapper.searchArticleById(article);
+    }
+
+    public Article getArticleDetail(Article article) {
+        return articleMapper.getArticleDetail(article);
     }
 }

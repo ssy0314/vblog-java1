@@ -23,4 +23,6 @@ public interface ArticleMapper {
     int addArticle(Article article);
 
     Article searchArticleById(Article article);
+
+    Article getArticleDetail(Article article);
 }

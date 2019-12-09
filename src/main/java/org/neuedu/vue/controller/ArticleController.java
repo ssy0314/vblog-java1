@@ -53,4 +53,8 @@ public class ArticleController {
         return articleService.searchArticleById(article);
     }
 
+    @GetMapping("/getArticleDetail")
+    public Article getArticleDetail(Article article){
+        return articleService.getArticleDetail(article);
+    }
 }
