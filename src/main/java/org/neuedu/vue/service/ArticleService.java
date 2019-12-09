@@ -55,4 +55,25 @@ public class ArticleService {
             return RespBean.error(500,"批量删除失败");
         }
     }
+    public RespBean updateManyArticle(ArrayList<Integer> list) {
+        int i = articleMapper.updateManyArticle(list);
+        if (i!=0){
+            return RespBean.ok(200,"批量删除成功");
+        }else{
+            return RespBean.error(500,"批量删除失败");
+        }
+    }
+
+    public RespBean addArticle(Article article) {
+        int i = articleMapper.addArticle(article);
+        if (i!=0){
+            return RespBean.ok(200,"发布文章成功");
+        }else{
+            return RespBean.error(500,"发布文章失败");
+        }
+    }
+
+    public Article searchArticleById(Article article) {
+        return articleMapper.searchArticleById(article);
+    }
 }

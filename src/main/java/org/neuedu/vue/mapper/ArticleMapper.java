@@ -17,4 +17,10 @@ public interface ArticleMapper {
     int delArticle(Article article);
 
     int delManyArticle(@Param("ids") ArrayList<Integer> list);
+
+    int updateManyArticle(@Param("ids") ArrayList<Integer> list);
+
+    int addArticle(Article article);
+
+    Article searchArticleById(Article article);
 }

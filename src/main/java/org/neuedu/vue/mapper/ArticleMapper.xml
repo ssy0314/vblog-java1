@@ -76,5 +76,27 @@
         </where>
     </delete>
 
+    <update id="updateManyArticle">
+        update `article`
+        set status = 3
+        <where>
+            id in
+            <foreach collection="ids" item="id" separator="," close=")" open="(">
+                #{id}
+            </foreach>
+        </where>
+    </update>
+
+
+    <insert id="addArticle">
+        insert into `article` values(default,#{title},#{hmcontent},#{mdcontent},default,default,default,#{uid},#{cid},#{status})
+    </insert>
+
+    <select id="searchArticleById" resultType="org.neuedu.vue.model.Article">
+        select *
+        from `article`
+        where id =#{id}
+    </select>
+
 
 </mapper>

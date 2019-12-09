@@ -25,8 +25,6 @@ public class ArticleController {
     }
     @PutMapping("/putArticle")
     public RespBean putArticle(@RequestBody Article article){
-        System.out.println(article.getId());
-        System.out.println(article.getStatus());
         Date updatetime = new Date();
         article.setUpdatetime(updatetime);
         return articleService.putArticle(article);
@@ -39,6 +37,20 @@ public class ArticleController {
     public RespBean delManyArticle(@RequestParam("ids") ArrayList<Integer> list){
         return articleService.delManyArticle(list);
     }
+    @PostMapping("/updateManyArticle")
+    public RespBean updateManyArticle(@RequestParam("ids") ArrayList<Integer> list) {
+        return articleService.updateManyArticle(list);
 
+    }
+    @PostMapping("/addArticle")
+    public RespBean addArticle(@RequestBody Article article) {
+        return articleService.addArticle(article);
+
+    }
+
+    @GetMapping("/searchArticleById")
+    public Article searchArticleById(Article article){
+        return articleService.searchArticleById(article);
+    }
 
 }
