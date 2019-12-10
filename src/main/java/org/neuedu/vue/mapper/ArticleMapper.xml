@@ -42,10 +42,10 @@
     update `article`
     <set>
 
-        <if test="status==3">
+        <if test="status!=null">
             status=#{status},
         </if>
-        <if test="status!=3">
+        <if test="status==null">
             updatetime = #{updatetime},
         </if>
         <if test="cid!=null">

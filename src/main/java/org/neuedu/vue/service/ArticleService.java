@@ -30,12 +30,31 @@ public class ArticleService {
     }
 
     public RespBean putArticle(Article article) {
-        int i = articleMapper.putArticle(article);
-        if (i!=0){
-            return RespBean.ok(200,"修改成功");
+        int i = 0;
+        if(article.getStatus()==3){
+             i = articleMapper.putArticle(article);
+            if (i!=0){
+                return RespBean.ok(200,"删除成功");
+            }else{
+                return RespBean.error(500,"删除失败");
+            }
+        }else if (article.getStatus()==1){
+            i = articleMapper.putArticle(article);
+            if (i!=0){
+            return RespBean.ok(200,"还原成功");
         }else{
-            return RespBean.error(500,"修改失败");
+            return RespBean.error(500,"还原失败");
+        }}
+        else{
+            article.setStatus(null);
+            i = articleMapper.putArticle(article);
+            if (i!=0){
+                return RespBean.ok(200,"修改成功");
+            }else{
+                return RespBean.error(500,"修改失败");
+            }
         }
+
     }
 
     public RespBean delArticle(Article article) {

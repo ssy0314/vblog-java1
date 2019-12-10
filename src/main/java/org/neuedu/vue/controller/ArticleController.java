@@ -25,6 +25,8 @@ public class ArticleController {
     }
     @PutMapping("/putArticle")
     public RespBean putArticle(@RequestBody Article article){
+        System.out.println(article.getStatus());
+        System.out.println(article.getId());
         Date updatetime = new Date();
         article.setUpdatetime(updatetime);
         return articleService.putArticle(article);
