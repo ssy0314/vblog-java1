@@ -116,4 +116,10 @@
         on a.uid=u.id
         where a.id =#{id}
     </select>
+
+    <update id="updateViews">
+        update `article`
+        set views=views+1
+        where id=#{id}
+    </update>
 </mapper>

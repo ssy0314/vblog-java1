@@ -25,4 +25,6 @@ public interface ArticleMapper {
     Article searchArticleById(Article article);
 
     Article getArticleDetail(Article article);
+
+    int updateViews(Article article);
 }

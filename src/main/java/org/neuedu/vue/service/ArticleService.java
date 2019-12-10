@@ -102,6 +102,7 @@ public class ArticleService {
     }
 
     public Article getArticleDetail(Article article) {
+        int i = articleMapper.updateViews(article);
         return articleMapper.getArticleDetail(article);
     }
 }

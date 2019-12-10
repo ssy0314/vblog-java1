@@ -30,8 +30,6 @@ public class UserController {
 
     @GetMapping("/searchUsers")
     public List<User> searchUsers(@RequestParam(value = "name",defaultValue = "") String name){
-        System.out.println("^^^^^"+name+"^^^^^");
-        System.out.println("123");
         return userService.searchUsers(name);
     }
 
