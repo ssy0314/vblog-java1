@@ -44,7 +44,14 @@ public class ArticleService {
             return RespBean.ok(200,"还原成功");
         }else{
             return RespBean.error(500,"还原失败");
-        }}
+        }}else if (article.getStatus()==6){
+            article.setStatus(1);
+            i = articleMapper.putArticle(article);
+            if (i!=0){
+                return RespBean.ok(200,"发布成功");
+            }else{
+                return RespBean.error(500,"发布失败");
+            }}
         else{
             article.setStatus(null);
             i = articleMapper.putArticle(article);
