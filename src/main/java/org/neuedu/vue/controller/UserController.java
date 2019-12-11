@@ -3,6 +3,7 @@ package org.neuedu.vue.controller;
 
 import org.neuedu.vue.model.Column;
 import org.neuedu.vue.model.RespBean;
+import org.neuedu.vue.model.Role;
 import org.neuedu.vue.model.User;
 import org.neuedu.vue.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,12 @@ public class UserController {
     @GetMapping("/searchUsers")
     public List<User> searchUsers(@RequestParam(value = "name",defaultValue = "") String name){
         return userService.searchUsers(name);
-    }
 
+    }
+    @GetMapping("/getRoles")
+    public List<Role> getRoles(){
+        return userService.getRoles();
+    }
 
 
 

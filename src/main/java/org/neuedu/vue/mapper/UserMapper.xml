@@ -6,6 +6,10 @@
 <select id="loadUserByUsername" resultType="org.neuedu.vue.model.User">
     select * from `user` where username = #{username}
 </select>
+
+    <select id="getRoleIdByuserid" resultType="org.neuedu.vue.model.RoleId">
+        select rid as id from `user_role` where uid = #{uid}
+    </select>
     <select id="getRoleById" resultType="org.neuedu.vue.model.Role">
         select *
         from `role`
@@ -36,6 +40,9 @@
             </if>
         </where>
     </select>
-
+    <select id="getRoles" resultType="org.neuedu.vue.model.Role">
+        select *
+        from role
+    </select>
 
 </mapper>

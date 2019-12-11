@@ -22,7 +22,15 @@ public class User implements UserDetails {
     private Boolean enabled;
     private Boolean locked;
     private List<Role> roles;
+    private List<Integer> rolesId;
 
+    public List<Integer> getRolesId() {
+        return rolesId;
+    }
+
+    public void setRolesId(List<Integer> rolesId) {
+        this.rolesId = rolesId;
+    }
 
     public Integer getId() {
         return id;

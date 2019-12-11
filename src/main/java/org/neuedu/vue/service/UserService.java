@@ -1,15 +1,14 @@
 package org.neuedu.vue.service;
 
 import org.neuedu.vue.mapper.UserMapper;
-import org.neuedu.vue.model.RespBean;
-import org.neuedu.vue.model.Role;
-import org.neuedu.vue.model.User;
+import org.neuedu.vue.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -32,8 +31,14 @@ public class UserService implements UserDetailsService {
         List<User> users = userMapper.getUsers();
         for (User user : users) {
             List<Role> roles =userMapper.getRoleById(user.getId());
+            List<RoleId> roleIds = userMapper.getRoleIdByuserid(user.getId());
+            ArrayList<Integer> arr = new ArrayList<>();
+            for (RoleId roleId : roleIds) {
+                arr.add(roleId.getId());
+            }
             user.setPassword(null);
             user.setRoles(roles);
+            user.setRolesId(arr);
         }
         return users;
     }
@@ -65,4 +70,11 @@ public class UserService implements UserDetailsService {
         }
         return users;
     }
+
+    public List<Role> getRoles() {
+        return userMapper.getRoles();
+    }
+
+
+
 }
