@@ -45,4 +45,15 @@
         from role
     </select>
 
+    <delete id="delBeforeRolesById">
+        delete from `user_role`
+        where uid = #{id}
+    </delete>
+
+    <insert id="updateRoles">
+        insert into `user_role`(uid,rid) values
+        <foreach collection="rolesId" item="rid" separator=")," close=")">
+            (#{id},#{rid}
+        </foreach>
+    </insert>
 </mapper>

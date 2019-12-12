@@ -3,6 +3,7 @@ package org.neuedu.vue.mapper;
 import org.neuedu.vue.model.Role;
 import org.neuedu.vue.model.RoleId;
 import org.neuedu.vue.model.User;
+import org.neuedu.vue.model.UserBean;
 
 import java.util.List;
 
@@ -22,4 +23,8 @@ public interface UserMapper {
     List<Role> getRoles();
 
     List<RoleId> getRoleIdByuserid(Integer id);
+
+    int updateRoles(UserBean user);
+
+    int delBeforeRolesById(Integer id);
 }

@@ -76,5 +76,14 @@ public class UserService implements UserDetailsService {
     }
 
 
+    public RespBean updateRoles(UserBean user) {
+        int j = userMapper.delBeforeRolesById(user.getId());
+        int i = userMapper.updateRoles(user);
+        if (i!=0 && j!=0){
+            return RespBean.ok(200,"修改成功");
+        }else{
+            return RespBean.error(500,"修改失败");
+        }
 
+    }
 }

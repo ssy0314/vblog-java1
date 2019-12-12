@@ -1,14 +1,12 @@
 package org.neuedu.vue.controller;
 
 
-import org.neuedu.vue.model.Column;
-import org.neuedu.vue.model.RespBean;
-import org.neuedu.vue.model.Role;
-import org.neuedu.vue.model.User;
+import org.neuedu.vue.model.*;
 import org.neuedu.vue.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -39,6 +37,9 @@ public class UserController {
         return userService.getRoles();
     }
 
-
+    @PutMapping("/updateRoles")
+    public RespBean updateRoles(@RequestBody UserBean user){
+        return userService.updateRoles(user);
+    }
 
 }
